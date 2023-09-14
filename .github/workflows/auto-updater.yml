@@ -23,7 +23,7 @@ jobs:
 
       - name: Check React Native Version
         id: yarnoutdated
-        working-directory: ReproducerApp
+        working-directory: CalculatorApp
         run: yarn outdated react-native
         continue-on-error: true
 
@@ -31,9 +31,9 @@ jobs:
         id: recreate
         if: steps.yarnoutdated.outcome == 'failure'
         run: |
-          rm -rf ReproducerApp
-          npx react-native@latest init ReproducerApp --skip-install
-          cd ReproducerApp
+          rm -rf CalculatorApp
+          npx react-native@latest init CalculatorApp --skip-install
+          cd CalculatorApp
           yarn
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
